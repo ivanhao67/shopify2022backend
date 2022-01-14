@@ -1,0 +1,24 @@
+html
+  head
+    title CRUD App
+body
+  h1 Create an item
+  form(action = 'create' method = 'POST')
+    input(type = 'text' name = 'itemname' placeholder='Enter item name' required)
+    br
+    input(type = 'text' name = 'qty' placeholder='Enter amount' required)
+    br
+    input(type = 'submit')
+  br
+  h1 Your items
+  form(action='tocsv' method='POST')
+    button(type='submit') Export to Csv
+  each item in inventory
+    form(action='delete' method='POST')
+      p id=#{item.id} | #{item.name} | Stock: #{item.stock} 
+      button(type='submit' name='id' value=`${item.id}`) delete 
+      a(href=`edit/${item.id}`) edit
+
+
+
+			
